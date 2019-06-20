@@ -43,6 +43,14 @@ func TestIsSimilar(t *testing.T) {
 		},
 		{
 			name:         "similar",
+			imgFilePath1: "testdata/sim3_1.jpg",
+			imgFilePath2: "testdata/sim3_2.jpg",
+			x:            8,
+			y:            8,
+			similar:      true,
+		},
+		{
+			name:         "similar",
 			imgFilePath1: "testdata/sim1_1.jpg",
 			imgFilePath2: "testdata/sim2_2.jpg",
 			x:            8,
