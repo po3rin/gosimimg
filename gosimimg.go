@@ -17,6 +17,7 @@ type Similar struct {
 	CompressedHeight int
 }
 
+// IsSimilar returns whether it is a similar image
 func (s *Similar) IsSimilar(img1, img2 image.Image) bool {
 	src1 := GetImage(img1, s.CompressedWidth, s.CompressedHeight)
 	src2 := GetImage(img2, s.CompressedWidth, s.CompressedHeight)
@@ -89,22 +90,22 @@ func GetHash(src image.Image) uint64 {
 	for i := 0; i < b.Max.Y; i++ {
 		for j := 0; j < b.Max.X; j++ {
 			r, g, b, _ := src.At(j, i).RGBA()
-			// calculates the average value of r, g, b (Because grayscale is used, pixels: = uint64 (r) is also acceptable)
+			// calculates the average value of r, g, b (Because grayscale is used, pixels: = uint64 (r) is also acceptable) .
 			pixel := uint64(math.Floor(float64((r + g + b)) / float64(3)))
-			sumPixels += pixel
 			pixels = append(pixels, pixel)
+			// for calcurate average.
+			sumPixels += pixel
 		}
 	}
 
 	var (
 		hash uint64
 		one  uint64 = 1
-
-		// find the average of luminance values
-		average = uint64(math.Floor(float64(sumPixels) / float64((b.Max.Y * b.Max.X))))
 	)
+
+	ave := uint64(math.Floor(float64(sumPixels) / float64((b.Max.Y * b.Max.X))))
 	for _, pixel := range pixels {
-		if pixel > average {
+		if pixel > ave {
 			hash |= one
 		}
 		one = one << 1
@@ -112,7 +113,7 @@ func GetHash(src image.Image) uint64 {
 	return hash
 }
 
-// GetDistance returns the hamming distance between hashes
+// GetDistance returns the hamming distance between hashes.
 func GetDistance(hash1, hash2 uint64) int {
 	d := 0
 	var i, k uint64
