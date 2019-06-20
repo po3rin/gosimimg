@@ -15,7 +15,7 @@ this package determine if it is a similar image using average hash. The average 
 ## Quick Start as CLI
 
 ```
-go get -u github.com/po3rin/gosimimg
+go get -u github.com/po3rin/cmd/gosimimg
 gosimimg testdata/sim1_1.jpg testdata/sim1_2.jpg
 simmilar !!
 ```
