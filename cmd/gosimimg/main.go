@@ -33,8 +33,12 @@ func main() {
 
 	fmt.Println("success to load images")
 
-	s := gosimimg.NewSimilar()
-	if s.IsSimilar(img1, img2) {
+	s := gosimimg.NewSimilar(
+		gosimimg.SetThreshold(0),
+		gosimimg.SetCompressedWidth(8),
+		gosimimg.SetCompressedHeight(8),
+	)
+	if !s.IsSimilar(img1, img2) {
 		fmt.Println("not simmilar !!")
 		return
 	}
