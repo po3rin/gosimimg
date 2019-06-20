@@ -33,15 +33,8 @@ func main() {
 
 	fmt.Println("success to load images")
 
-	src1 := gosimimg.GetImage(img1, 8, 8)
-	src2 := gosimimg.GetImage(img2, 8, 8)
-
-	fmt.Println("success to resize & gray images")
-
-	fmt.Println(src1.Bounds())
-	fmt.Println(src2.Bounds())
-
-	if !gosimimg.IsSimilar(src1, src2) {
+	s := gosimimg.NewSimilar()
+	if s.IsSimilar(img1, img2) {
 		fmt.Println("not simmilar !!")
 		return
 	}

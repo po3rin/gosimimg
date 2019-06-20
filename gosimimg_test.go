@@ -112,10 +112,8 @@ func TestIsSimilar(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		src1 := gosimimg.GetImage(img1, tt.x, tt.y)
-		src2 := gosimimg.GetImage(img2, tt.x, tt.y)
-
-		similar := gosimimg.IsSimilar(src1, src2)
+		s := gosimimg.NewSimilar()
+		similar := s.IsSimilar(img1, img2)
 
 		if tt.similar && !similar {
 			t.Error("unexpected similar, but got no similar")

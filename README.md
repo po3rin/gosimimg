@@ -6,14 +6,14 @@
 
 ## What is
 
-### is a similar image ? yes !!
+### Is a similar image ? yes !!
 
 <img src="./testdata/sim3_1.jpg" width="240px">
 <img src="./testdata/sim3_2.jpg" width="240px">
 
 this package determine if it is a similar image using average hash. The average of the luminance values ​​is calculated, and the 64-bit hash value is calculated as “1” for greater than the average and “0” for less than the average.
 
-## Quick Start
+## Quick Start as CLI
 
 ```
 go get -u github.com/po3rin/gosimimg
@@ -23,22 +23,51 @@ simmilar !!
 
 ## As Code
 
+### Simple Usage
+
 ```go
 func main() {
 
-    // prepare image.Image
-	src1 := gosimimg.GetImage(img1, 8, 8)
-	src2 := gosimimg.GetImage(img2, 8, 8)
+	// prepare image.Image ...
 
-	if !gosimimg.IsSimilar(src1, src2) {
+	// inits config.
+	// defaults:
+	// s := &Similar{
+	// 	Threshold:        10,
+	// 	CompressedWidth:  8,
+	// 	CompressedHeight: 8,
+	// }
+	s := gosimimg.NewSimilar()
+
+	// Do Similar image search.
+	if s.IsSimilar(img1, img2) {
 		fmt.Println("not simmilar !!")
 		return
 	}
-	fmt.Println("simmilar !!")
 }
 ```
 
-## reference(ja)
+### With Options
+
+```go
+func main() {
+	// prepare image.Image ...
+
+	s := gosimimg.NewSimilar(
+		gosimimg.SetThreshold(10),
+		gosimimg.SetCompressedWidth(16),
+		gosimimg.SetCompressedHeight(16),
+	)
+
+	// Do Similar image search.
+	if s.IsSimilar(img1, img2) {
+		fmt.Println("not simmilar !!")
+		return
+	}
+}
+```
+
+## reference ( japanese )
 
 [類似画像検索について簡単にまとめてみた](https://qiita.com/hurutoriya/items/88a16d36bafa8d6360e2)
 
