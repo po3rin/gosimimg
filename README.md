@@ -8,8 +8,7 @@
 
 ### Is a similar image ? yes !!
 
-<img src="./testdata/sim3_1.jpg" width="240px">
-<img src="./testdata/sim3_2.jpg" width="240px">
+<img src="./testdata/similar.png" width="460px">
 
 this package determine if it is a similar image using average hash. The average of the luminance values ​​is calculated, and the 64-bit hash value is calculated as “1” for greater than the average and “0” for less than the average.
 
