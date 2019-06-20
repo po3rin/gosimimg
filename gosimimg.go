@@ -26,10 +26,7 @@ func (s *Similar) IsSimilar(img1, img2 image.Image) bool {
 	hash2 := GetHash(src2)
 
 	d := GetDistance(hash1, hash2)
-	if d < s.Threshold {
-		return true
-	}
-	return false
+	return d < s.Threshold
 }
 
 // SetThreshold sets threshold for Determining if it is a similar image.
