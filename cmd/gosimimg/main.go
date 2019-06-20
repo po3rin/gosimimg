@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("success to load images")
 
 	s := gosimimg.NewSimilar(
-		gosimimg.SetThreshold(0),
+		gosimimg.SetThreshold(10),
 		gosimimg.SetCompressedWidth(8),
 		gosimimg.SetCompressedHeight(8),
 	)
