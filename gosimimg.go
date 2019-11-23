@@ -112,7 +112,7 @@ func GetHash(src image.Image) uint64 {
 
 // GetDistance returns the hamming distance between hashes.
 func GetDistance(hash1, hash2 uint64) int {
-	d := 0
+	var d int
 	var i, k uint64
 	for i = 0; i < 64; i++ {
 		k = (1 << i)
